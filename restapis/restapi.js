@@ -83,6 +83,25 @@ app.put('/albums', function (req, res) {
   res.end('album updated if it existed')
 })
 
+// Search
+app.get('/search/:title', function (req, res) {
+  fs.readFile(__dirname + '/' + 'albums.json', 'utf8', function (err, data) {
+	   var titleOfAlbum = req.params.title
+     var output = []
+
+	   data = JSON.parse(data)
+
+	   for (var i = 0; i < data.length; i++) {
+      if (data[i].title.includes(titleOfAlbum)) {
+		   		output.push(data[i]);
+      }
+	   }
+    console.log(output)
+    res.end(JSON.stringify(output))
+  })
+})
+
+
 var server = app.listen(8081, function () {
   var host = server.address().address
   var port = server.address().port
