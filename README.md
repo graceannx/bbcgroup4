@@ -3,8 +3,9 @@ Features To Implement
 
 
 Backend 
-1. create function to Add an album 
-2. create function to delete an album
+
+3. get album by title 
+
 
 
 
